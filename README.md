@@ -40,7 +40,7 @@ Execute este script no seu MySQL:
         PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-Edite também o arquivo `src/main/webapp/WEB-INF/resources.xml` informando os dados de acesso ao banco de dados.
+Edite o arquivo `src/main/webapp/WEB-INF/resources.xml` informando os dados de acesso ao seu banco de dados configurado acima.
 
     <resources>
         <Resource id="jsfHibernateDatasource" type="DataSource">
