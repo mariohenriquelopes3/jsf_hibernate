@@ -1,0 +1,110 @@
+html, body {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    background-color: #f5f5f5;
+}
+
+* {
+    font-family: sans-serif;
+    color: #000;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+a, a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.titulo {
+    color: #ead7d7;
+    text-align: center;
+    font-size: 100px;
+    font-family: sans-serif;
+    margin: 65px 0px;
+}
+.mypanel {
+    max-width: 800px;
+    margin: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+.mypanel, .mypanel > div {
+    border: 0 !important;
+    padding: 0 !important;
+}
+.divBox > div {
+    box-sizing: border-box;
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+}
+.divBox > div > div {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid rgba(34,36,38,.15);
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+    border-radius: 5px;
+}
+.input {
+    border: 1px solid transparent !important;
+    box-sizing: border-box;
+    color: rgb(85, 85, 85) !important;
+    padding: 11px 12px;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    width: 100%;
+    border-radius: 5px;
+}
+.inputCompleted {
+    text-decoration: line-through !important;
+    color: #adadad !important;
+}
+.input:focus {
+    border: 1px solid rgba(34,36,38,.15) !important;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15) !important;
+    outline: 0;
+    text-decoration: none !important;
+    color: rgb(85, 85, 85) !important;
+}
+.tablefooter {
+    width: 100%;
+}
+.tablefooter, .tablefooter * {
+    color: #555;
+    font-size: 14px;
+}
+.tablefooter a {
+    border: 1px solid transparent;
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+.tablefooter a.ativo, .tablefooter a:hover {
+    border: 1px solid #c3c3c3;
+}
+.table1 {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table1 > tbody > tr > td {
+    border-bottom: 1px solid #d8d4d4;
+}
+.table1 > tbody > tr:first-child > td, .table1 > tbody > tr:last-child > td {
+    border-bottom: 1px solid transparent;
+}
+.divLinkFooter {
+    display: inline-block;
+}
+@media only screen and (max-width: 500px) {
+    .divLinkFooter {
+        display: block;
+        text-align: center;
+    }
+    .titulo {
+        margin: 20px 0px;
+    }
+}

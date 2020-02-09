@@ -1,0 +1,70 @@
+.divLabelBoolean {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.divLabelBoolean:hover {
+    background-color: rgba(54, 152, 48, 0.15);;
+}
+
+/* The labelBoolean */
+.labelBoolean {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+	width:22px;
+	height:22px;
+	white-space:nowrap;
+}
+
+/* Hide the browser's default checkbox */
+.labelBoolean input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom checkbox */
+.checkmarkBoolean {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border:1px solid #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.labelBoolean:hover .checkmarkBoolean {
+    background-color: transparent;
+}
+
+/* When the checkbox is checked, add a blue background */
+.labelBoolean input:checked ~ .checkmarkBoolean {
+    background-color: #71a778;
+}
+
+/* Create the checkmarkBoolean/indicator (hidden when not checked) */
+.checkmarkBoolean::after {
+    display: none;
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Show the checkmarkBoolean when checked */
+.labelBoolean input:checked ~ .checkmarkBoolean::after {
+    display: block;
+}

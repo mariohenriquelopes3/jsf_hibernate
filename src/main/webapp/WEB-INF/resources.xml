@@ -1,0 +1,8 @@
+<resources>
+    <Resource id="jsfHibernateDatasource" type="DataSource">
+        JdbcDriver com.mysql.jdbc.Driver
+        JdbcUrl jdbc:mysql://<host>:<port>/jsf_hibernate?serverTimezone=UTC
+        UserName <user>
+        Password <password>
+    </Resource>
+</resources> 

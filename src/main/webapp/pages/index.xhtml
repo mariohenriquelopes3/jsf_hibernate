@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Todo List</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS's -->
+    <link href="#{request.contextPath}/css/inputBoolean.css" rel="stylesheet"></link>
+    <link href="#{request.contextPath}/css/app.css" rel="stylesheet"></link>
+    <link href="#{request.contextPath}/css/lightbox.css" rel="stylesheet"></link>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></link>
+
+    <!-- Javascript -->
+    <script src="#{request.contextPath}/js/app.js"></script>
+    <script src="#{request.contextPath}/js/lightbox.js"></script>
+
+</h:head>
+<body>
+    <h1 class="titulo">todos</h1>
+    <h:form id="todos">
+        <p:growl widgetVar="growl" sticky="true" />
+        <p:panel widgetVar="todoList" styleClass="mypanel">
+            <div class="divBox">
+                <div>
+                    <div>
+                        <table class="table1">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">
+                                        <p:remoteCommand update="@widgetVar(todoList) @widgetVar(growl)" name="add" actionListener="#{todoBean.add}" onerror="erroGenerico()" />
+                                        <p:inputText styleClass="input inputNovo" id="description" value="#{todoBean.todo.description}" placeholder="What needs to be done?" onkeypress="if (event.keyCode == 13) { add(); return false; }" />
+                                    </td>
+                                </tr>
+                                    <p:repeat value="#{todoBean.todos}" var="t" varStatus="status">
+                                        <tr>
+                                            <td>
+                                                <div class="divLabelBoolean">
+                                                    <label class="labelBoolean">&#160;
+                                                        <p:remoteCommand update="@widgetVar(todoList) @widgetVar(growl)" name="changeStatus_#{status.index}" actionListener="#{todoBean.update(t)}" onerror="erroGenerico()" />
+                                                        <h:selectBooleanCheckbox value="#{t.completed}" onclick="changeStatus_#{status.index}();" />
+                                                        <span class="checkmarkBoolean"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 100%;">
+                                                <p:remoteCommand update="@widgetVar(todoList) @widgetVar(growl)" name="updateTodo_#{status.index}" actionListener="#{todoBean.update(t)}" onerror="erroGenerico()" />
+                                                <p:inputText styleClass="#{(!t.completed) ? 'input' : 'input inputCompleted'}" value="#{t.description}" onkeypress="if (event.keyCode == 13) { this.blur(); updateTodo_#{status.index}(); return false; }" />
+                                            </td>
+                                            <td>
+                                                <p:commandLink update="@widgetVar(todoList) @widgetVar(growl)" action="#{todoBean.delete(t)}" onerror="erroGenerico()">
+                                                    <i style="font-size: 24px;color: red;" class="fa fa-times" aria-hidden="true"></i>
+                                                </p:commandLink>
+                                            </td>
+                                        </tr>
+                                    </p:repeat>
+                                <tr>
+                                    <td colspan="3">
+                                        <table class="tablefooter">
+                                            <tr>
+                                                <td style="white-space: nowrap;">
+                                                    #{todoBean.qtdItensLeft} items left
+                                                </td>
+                                                <td style="width: 100%;text-align: center;">
+                                                    <div class="divLinkFooter">
+                                                        <p:commandLink id="linkAll" styleClass="#{(todoBean.all) ? 'ativo' : ''}" update="@widgetVar(todoList)" action="#{todoBean.listByTipo(1)}" onerror="erroGenerico()">
+                                                            All
+                                                        </p:commandLink>
+                                                    </div>
+
+                                                    <div class="divLinkFooter">
+                                                        <p:commandLink id="linkActive" styleClass="#{(todoBean.active) ? 'ativo' : ''}" update="@widgetVar(todoList)" action="#{todoBean.listByTipo(2)}" onerror="erroGenerico()">
+                                                            Active
+                                                        </p:commandLink>
+                                                    </div>
+
+                                                    <div class="divLinkFooter">
+                                                        <p:commandLink id="linkCompleted" styleClass="#{(todoBean.completed) ? 'ativo' : ''}" update="@widgetVar(todoList)" action="#{todoBean.listByTipo(3)}" onerror="erroGenerico()">
+                                                            Completed
+                                                        </p:commandLink>
+                                                    </div>
+                                                </td>
+                                                <td style="white-space: nowrap;">
+                                                    <p:commandLink update="@widgetVar(todoList) @widgetVar(growl)" action="#{todoBean.clearCompleted}" onerror="erroGenerico()">
+                                                        Clear completed
+                                                    </p:commandLink>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </p:panel>
+
+
+        <div style="text-align: center;margin-top: 30px;color: #9e9e9e;">
+            Click to edit a todo and press enter to submit.
+        </div>
+
+    </h:form>
+
+    <!-- LIGHTBOX HTML -->
+    <div class="divLightbox1"></div>
+    <div><div></div></div>
+
+    <div class="divLightbox2"></div>
+    <div><div></div></div>
+
+    <script>
+        $('.inputNovo').focus();
+    </script>
+</body>
+</html>
