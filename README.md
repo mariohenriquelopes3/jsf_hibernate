@@ -10,16 +10,14 @@ A aplicação consiste  num CRUD de lista de tarefas (TODO List).
 
 ## Tecnologias utilizadas
 
----
-Java: 1.8+
-Servidor: TomEE Plume 8.0.1
-Banco de Dados: MySQL 5.7
-IDE: Eclipse Java EE
-Gerenciamento: Maven
-Backend: JSF 2.3 e Primefaces
-Persistência: Hibernate 4.2.*
-Frontend: HTML, CSS, JS
----
+- Java 1.8+
+- Servidor TomEE Plume 8.0.1
+- Banco de Dados MySQL 5.7
+- Eclipse Java EE
+- Maven
+- JSF 2.3 e Primefaces
+- Hibernate 4.2.*
+- Frontend HTML, CSS, JS
 
 ## Importação do Projeto
 
@@ -42,7 +40,7 @@ Execute este script no seu MySQL:
         PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-Edit também o arquivo `src/main/webapp/WEB-INF/resources.xml` informando os dados de acesso ao banco de dados.
+Edite também o arquivo `src/main/webapp/WEB-INF/resources.xml` informando os dados de acesso ao banco de dados.
 
     <resources>
         <Resource id="jsfHibernateDatasource" type="DataSource">
