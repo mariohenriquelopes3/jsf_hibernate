@@ -33,6 +33,8 @@ Execute este script no seu MySQL:
 
     create database jsf_hibernate;
 
+    use jsf_hibernate;
+
     CREATE TABLE todo (
         id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
         description varchar(255) DEFAULT NULL,
