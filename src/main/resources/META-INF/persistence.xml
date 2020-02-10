@@ -6,7 +6,10 @@
 
     <persistence-unit name="jsf_hibernate" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>br.com.esig.model.Todo</class>
+        <!--
+        	Usando Annotation
+        	<class>br.com.esig.model.Todo</class>
+    	-->
         <properties>
         	<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
         </properties>
