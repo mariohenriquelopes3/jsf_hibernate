@@ -73,6 +73,10 @@ public class TodoBean implements Serializable {
 	}
 
 	public void add() {
+		if (this.todo.getDescription() == null || "".equals(this.todo.getDescription().trim())) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Description is empty", "Description is empty"));
+			return;
+		}
 		this.todoManager.save(this.todo);
 		this.listByTipo();
 		this.todo = new Todo();
